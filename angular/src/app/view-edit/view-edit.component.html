@@ -1,0 +1,66 @@
+<div class="signup-form">
+  <form method="post" class="form">
+    <h2>Edit Order</h2>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-user"></i>
+        </span>
+        <label><Strong>Order name:</Strong> </label>
+        <input type="text" class="form-control"  [(ngModel)]="orderView.ordername" name="name" placeholder="Order Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-paper-plane"></i>
+        </span>
+        <label><strong>Quantity:</strong> </label>
+        <input type="number" class="form-control" name="Quantity" [(ngModel)]="orderView.quantity" placeholder="Quantity">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-lock"></i>
+        </span>
+        <label><strong>Price:</strong> </label>
+        <input type="number" class="form-control" name="price" [(ngModel)]="orderView.price" placeholder="Price" >
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-lock"></i>
+        </span>
+        <label><Strong>Your Phone:</Strong></label>
+        <input type="number" class="form-control" name="phone" [(ngModel)]="orderView.phone" placeholder="Your Phone" >
+      </div>
+
+
+      <div class="control">
+          <button style="float: left;" type="submit" class="btn btn-danger  btn-lg" (click)="editOrder(orderView)" data-toggle="modal" data-target="#success">Edit</button>
+          <button style="float: right;" type="submit" class="btn btn-danger btn-lg" [routerLink]="['/listview']">Back</button>
+      </div>
+
+    </div>
+    <div id="success" class="modal fade">
+      <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="icon-box">
+              <i class="material-icons">&#xE876;</i>
+            </div>				
+            <h4 class="modal-title">Awesome!</h4>	
+          </div>
+          <div class="modal-body">
+            <p class="text-center">Edit Success!!</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success btn-block" data-dismiss="modal" [routerLink]="'/listview'">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>     
+  </form>
+  
+
+</div>

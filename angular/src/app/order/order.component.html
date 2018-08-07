@@ -1,0 +1,71 @@
+<div class="contener">
+  <div class="form-group">
+
+    <input class="form-control" type="text" name="search" [(ngModel)]="filter" placeholder="Search anything...">
+
+    <button class="btn btn-danger btn-lg" [routerLink]="['/create']">Create</button>
+  </div>
+  <table class="table table-bordered table-inverse">
+    <thead class="thead-inverse|thead-default">
+      <tr>
+        <th>STT</th>
+        <th>Username</th>
+        <th (click)="sort('ordername')">Order Name
+          <span class="glyphicon sort-icon" *ngIf="key =='ordername'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+        <th>Quantity</th>
+        <th>Price (VND)</th>
+        <th>Phone</th>
+        <th>Detail -Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders| orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: 10, currentPage: p } ;let i=index "
+        (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+        <td>{{i+1}}</td>
+        <td><i>empty</i></td>
+        <td>{{order.ordername}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.price}}</td>
+        <td>{{order.phone}}</td>
+        <td>
+          <button class="btn btn-danger" [routerLink]="['/view',order.id]">Detail -Edit</button>
+        </td>
+        <td>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popupDel" (click)="setId(order.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div align="center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+<!-- show popup-->
+
+<!-- Modal HTML -->
+<div id="popupDel" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>				
+				<h4 class="modal-title">Are you sure?</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>Do you really want to delete these records? This process cannot be undone.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteById(idDel)">Delete</button>
+			</div>
+		</div>
+	</div>
+</div>  

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="card card-container">
+  <form (ngSubmit)="createOrder(order)" [formGroup]="orderForm" novalidate>
+    <div class="form-group">
+      <label>Order name: </label>
+      <input type="text" class="form-control" formControlName ="ordername"[(ngModel)]="order.ordername" required autofocus name="nameorder" placeholder="Order Name (min 10 chars!!!)"
+      />
+    </div>
+    <div class="form-group">
+      <label>Quantity: </label>
+      <input type="number" class="form-control" min="0" formControlName="quantity" [(ngModel)]="order.quantity" required autofocus name="quantity" placeholder="Quantity"
+      />
+    </div>
+    <div class="form-group">
+      <label>Price(VND): </label>
+      <input type="number" class="form-control" min="0" formControlName="price" [(ngModel)]="order.price" required name="price" placeholder="price" />
+    </div>
+    <div class="form-group">
+      <label>Phone: </label>
+      <input type="number" class="form-control" min="0"  formControlName="phone" [(ngModel)]="order.phone" required name="phone" placeholder="Your Phone" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin"  [disabled]="!orderForm.valid">Submit</button>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger btn-block btn-lg"  [routerLink]="['/listview']">Back</button>
+    </div>
+  </form>
+  
+  </div>
+</div>

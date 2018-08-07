@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="card card-container">
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="https://webtimviec.vn/wp-admin/uploads/photo.jpg" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin" (ngSubmit)="checkLogin(user)">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus [(ngModel)]="user.username"
+                name="username">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required [(ngModel)]="user.password"
+                name="password">
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+
+        </form>
+        <!-- /form -->
+
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" data-toggle="modal" data-target="#signup">Sign Up</button>
+
+
+    </div>
+    <!-- /card-container -->
+    <!--form Sign Up-->
+    <div class="modal fade" id="signup" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="text-primary">Signup Form</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form method="post" (ngSubmit)="createuser(user)" role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Your Name *:</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="name" value="" placeholder="Please Enter Your Name" required [(ngModel)]="user.username">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Email address *:</label>
+                                <div class="col-md-9">
+                                    <input type="email" class="form-control" name="email" value="" placeholder="Please Enter Your Email" required [(ngModel)]="user.email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Password *:</label>
+                                <div class="col-md-9">
+                                    <input type="password" class="form-control" name="password" value="" placeholder="Please Enter Your password" required [(ngModel)]="user.password">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                               
+                                <div class="col-md-9">
+                                    <input type="submit" name="Signup Now" value="Signup Now" class="btn btn-info">
+                                    <input type="reset" name="Reset" value="Reset" class="btn btn-default">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /container -->
