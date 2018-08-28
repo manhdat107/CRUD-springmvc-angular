@@ -8,12 +8,16 @@ import { ViewEditComponent } from './view-edit/view-edit.component';
 import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent
 
   },
   {
     path: 'listview',
+    component: OrderComponent
+  },
+  {
+    path: '',
     component: OrderComponent
   },
 
